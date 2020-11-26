@@ -16,10 +16,15 @@ END INTERFACE
 INTERFACE FDTimeDerivative
   MODULE PROCEDURE FDTimeDerivative
 END INTERFACE
+
+INTERFACE FinalizeFiniteDifference
+  MODULE PROCEDURE FinalizeFiniteDifference
+END INTERFACE
 !-------------------------------------------------------------------------------!
 PUBLIC :: InitializeFiniteDifference
 PUBLIC :: FillInitialConditions
 PUBLIC :: FDTimeDerivative
+PUBLIC :: FinalizeFiniteDifference
 !-------------------------------------------------------------------------------!
 !
 !
@@ -372,6 +377,60 @@ END DO
 
 !-------------------------------------------------------------------------------!
 END SUBROUTINE TotalFluxY
+!===============================================================================!
+!
+!
+!
+!===============================================================================!
+SUBROUTINE FinalizeFiniteDifference()
+!-------------------------------------------------------------------------------!
+USE MOD_FiniteDifference2D_vars,ONLY: MeshNodes
+USE MOD_FiniteDifference2D_vars,ONLY: U
+USE MOD_FiniteDifference2D_vars,ONLY: V
+USE MOD_FiniteDifference2D_vars,ONLY: Ut
+USE MOD_FiniteDifference2D_vars,ONLY: S
+USE MOD_FiniteDifference2D_vars,ONLY: WM
+USE MOD_FiniteDifference2D_vars,ONLY: WP
+USE MOD_FiniteDifference2D_vars,ONLY: FX
+USE MOD_FiniteDifference2D_vars,ONLY: FY
+USE MOD_FiniteDifference2D_vars,ONLY: Fn
+USE MOD_FiniteDifference2D_vars,ONLY: Fp
+USE MOD_FiniteDifference2D_vars,ONLY: Ind
+USE MOD_FiniteDifference2D_vars,ONLY: K0
+USE MOD_FiniteDifference2D_vars,ONLY: K1
+USE MOD_FiniteDifference2D_vars,ONLY: K2
+USE MOD_FiniteDifference2D_vars,ONLY: K3
+USE MOD_FiniteDifference2D_vars,ONLY: K4
+USE MOD_FiniteDifference2D_vars,ONLY: K5
+!-------------------------------------------------------------------------------!
+IMPLICIT NONE
+!-------------------------------------------------------------------------------!
+! FORMAL ARGUMENTS
+!-------------------------------------------------------------------------------!
+! LOCAL VARIABLES
+!-------------------------------------------------------------------------------!
+
+DEALLOCATE(MeshNodes)
+DEALLOCATE(U)
+DEALLOCATE(V)
+DEALLOCATE(Fn)
+DEALLOCATE(Fp)
+DEALLOCATE(WM)
+DEALLOCATE(WP)
+DEALLOCATE(S)
+DEALLOCATE(Ut)
+DEALLOCATE(FX)
+DEALLOCATE(FY)
+DEALLOCATE(Ind)
+DEALLOCATE(K0)
+DEALLOCATE(K1)
+DEALLOCATE(K2)
+DEALLOCATE(K3)
+DEALLOCATE(K4)
+DEALLOCATE(K5)
+
+!-------------------------------------------------------------------------------!
+END SUBROUTINE FinalizeFiniteDifference
 !===============================================================================!
 !
 !
