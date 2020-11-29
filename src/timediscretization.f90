@@ -103,37 +103,9 @@ REAL,INTENT(IN) :: t
 !-------------------------------------------------------------------------------!
 ! LOCAL VARIABLES
 !-------------------------------------------------------------------------------!
-! REAL,ALLOCATABLE :: K0(:,:,:)
-! REAL,ALLOCATABLE :: K1(:,:,:)
-! REAL,ALLOCATABLE :: K2(:,:,:)
-! REAL,ALLOCATABLE :: K3(:,:,:)
-! REAL,ALLOCATABLE :: K4(:,:,:)
-! REAL,ALLOCATABLE :: K5(:,:,:)
-! REAL            :: K0(1:nVar,1:nElemsX,1:nElemsY)
-! REAL            :: K1(1:nVar,1:nElemsX,1:nElemsY)
-! REAL            :: K2(1:nVar,1:nElemsX,1:nElemsY)
-! REAL            :: K3(1:nVar,1:nElemsX,1:nElemsY)
-! REAL            :: K4(1:nVar,1:nElemsX,1:nElemsY)
-! REAL            :: K5(1:nVar,1:nElemsX,1:nElemsY)
 REAL            :: tStage
 INTEGER         :: ii, jj
 !-------------------------------------------------------------------------------!
-
-! ALLOCATE(K0(1:nVar,1:nElemsX,1:nElemsY))
-! ALLOCATE(K1(1:nVar,1:nElemsX,1:nElemsY))
-! ALLOCATE(K2(1:nVar,1:nElemsX,1:nElemsY))
-! ALLOCATE(K3(1:nVar,1:nElemsX,1:nElemsY))
-! ALLOCATE(K4(1:nVar,1:nElemsX,1:nElemsY))
-! ALLOCATE(K5(1:nVar,1:nElemsX,1:nElemsY))
-
-
-! WRITE(*,*) "DEBUG-RK", t
-! WRITE(*,*) "DEBUG-RK", nVar, dt, nElemsX, nElemsY
-! WRITE(*,*) "DEBUG-RK", U
-! WRITE(*,*) "DEBUG-RK", V
-! WRITE(*,*) "DEBUG-RK", Ut
-
-! STOP
 
 K0(1:nVar,1:nElemsX,1:nElemsY) = U(1:nVar,1:nElemsX,1:nElemsY)
 
@@ -204,13 +176,6 @@ DO jj=1,nElemsY
     CALL ConsToPrim(U(1:nVar,ii,jj),V(1:nVar,ii,jj))
   END DO
 END DO
-
-! DEALLOCATE(K0)
-! DEALLOCATE(K1)
-! DEALLOCATE(K2)
-! DEALLOCATE(K3)
-! DEALLOCATE(K4)
-! DEALLOCATE(K5)
 
 !-------------------------------------------------------------------------------!
 END SUBROUTINE TimeDiscretizationBySSPRK4
